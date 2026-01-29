@@ -1,0 +1,88 @@
+﻿@model IEnumerable<InfoCcare.Models.Roaming>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+@{
+    ViewData["Title"] = "Roaming Tariffs";
+    var withVat = Model.Where(x => x.Vat == "WITH").ToList();
+    var withoutVat = Model.Where(x => x.Vat == "WITHOUT").ToList();
+}
+
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> ""تعرفة التجوال  غير شاملة الضريبة – Roaming Tariff No Vat""</h4>
+    </div>
+    <table class="custom-table" dir="ltr">
+        <thead>
+            <tr>
+                <th>Zone</th>
+                <th>MB</th>
+                <th>SMS</th>
+                <th>MTC</th>
+                <th>CBH</th>
+                <th>LCL</th>
+                <th>INTER</th>
+                <th>THURAYA</th>
+                <th>INMARSAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in withoutVat)
+            {
+                <tr>
+                    <td>@item.Zone</td>
+                    <td>@item.Mb</td>
+                    <td>@item.Sms</td>
+                    <td>@item.Mtc</td>
+                    <td>@item.Cbh</td>
+                    <td>@item.Lcl</td>
+                    <td>@item.Inter</td>
+                    <td>@item.Thuraya</td>
+                    <td>@item.Inmarsat</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> ""تعرفة التجوال شاملة الضريبة – Roaming Tariff With Vat""</h4>
+    </div>
+    <table class="custom-table">
+        <thead>
+        <tr>
+            <th>Zone</th>
+            <th>MB</th>
+            <th>SMS</th>
+            <th>MTC</th>
+            <th>CBH</th>
+            <th>LCL</th>
+            <th>INTER</th>
+            <th>THURAYA</th>
+            <th>INMARSAT</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in withVat)
+        {
+            <tr>
+                <td>@item.Zone</td>
+                <td>@item.Mb</td>
+                <td>@item.Sms</td>
+                <td>@item.Mtc</td>
+                <td>@item.Cbh</td>
+                <td>@item.Lcl</td>
+                <td>@item.Inter</td>
+                <td>@item.Thuraya</td>
+                <td>@item.Inmarsat</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

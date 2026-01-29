@@ -1,0 +1,176 @@
+﻿@model InfoCcare.Models.PrepaidOfferViewModel
+
+@{
+    var voiceBundles = Model.Offers.Where(o => o.OffierType == "Voice bundles");
+    var voiceBundlesGift = Model.Offers.Where(o => o.OffierType == "Voice bundles Gift");
+    var internetBundles = Model.Offers.Where(o => o.OffierType == "Internet bundles");
+    var internetBundlesGift = Model.Offers.Where(o => o.OffierType == "Internet bundles Gift");
+}
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="container mt-4">
+
+    <ul class="nav nav-tabs justify-content-center" id="offerTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="voice-tab" data-bs-toggle="tab" data-bs-target="#voice" type="button" role="tab">📞 عروض المكالمات</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="voiceGift-tab" data-bs-toggle="tab" data-bs-target="#voiceGift" type="button" role="tab">🎁 مكالمات (هدايا)</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="internet-tab" data-bs-toggle="tab" data-bs-target="#internet" type="button" role="tab">🌐 عروض الإنترنت</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="internetGift-tab" data-bs-toggle="tab" data-bs-target="#internetGift" type="button" role="tab">🎁 إنترنت (هدايا)</button>
+        </li>
+    </ul>
+
+
+    <div class="tab-content mt-3" id="offerTabsContent">
+        <!-- Voice Bundles -->
+        <div class="tab-pane fade show active" id="voice" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center"> ""عروض باقـات المكالمات – Call Package Offers""</h4>
+                </div>
+                <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>الرمز</th>
+                        <th>السعر (بدون ضريبة)</th>
+                        <th>السعر (مع الضريبة)</th>
+                        <th>الباقة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in voiceBundles)
+                    {
+                        <tr>
+                            <td>@item.Code</td>
+                             <td>@decimal.Parse(item.PriceNoVat).ToString("N0")</td>
+                             <td>@decimal.Parse(item.PriceVat).ToString("N0")</td>
+                            <td>@item.Packpage</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- Voice Bundles Gift -->
+        <div class="tab-pane fade" id="voiceGift" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center"> ""عروض اهدا باقـات المكالمات – Call Gift Package Offers""</h4>
+                </div>
+                <table class="custom-table">
+                <thead >
+                        <tr>
+                            <th>الرمز</th>
+                            <th>السعر (بدون ضريبة)</th>
+                            <th>السعر (مع الضريبة)</th>
+                            <th>الباقة</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in voiceBundlesGift)
+                    {
+                            <tr>
+                                <td>@item.Code</td>
+                                <td>@decimal.Parse(item.PriceNoVat).ToString("N0")</td>
+                                <td>@decimal.Parse(item.PriceVat).ToString("N0")</td>
+                                <td>@item.Packpage</td>
+                            </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- Internet Bundles -->
+        <div class="tab-pane fade" id="internet" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center"> ""عروض  باقـات الإنترنت –Internet Package Offers""</h4>
+                </div>
+                <table class="custom-table">
+                <thead>
+                        <tr>
+                            <th>الرمز</th>
+                            <th>السعر (بدون ضريبة)</th>
+                            <th>السعر (مع الضريبة)</th>
+                            <th>الباقة</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in internetBundles)
+                    {
+                            <tr>
+                                <td>@item.Code</td>
+                                <td>@decimal.Parse(item.PriceNoVat).ToString("N0")</td>
+                                <td>@decimal.Parse(item.PriceVat).ToString("N0")</td>
+                                <td>@item.Packpage</td>
+                            </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- Internet Bundles Gift -->
+        <div class="tab-pane fade" id="internetGift" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center"> ""عروض اهدا باقـات الإنترنت – Internet Gift Package Offers""</h4>
+                </div>
+                <table class="custom-table">
+                <thead>
+                        <tr>
+                            <th>الرمز</th>
+                            <th>السعر (بدون ضريبة)</th>
+                            <th>السعر (مع الضريبة)</th>
+                            <th>الباقة</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in internetBundlesGift)
+                    {
+                            <tr>
+                                <td>@item.Code</td>
+                                <td>@decimal.Parse(item.PriceNoVat).ToString("N0")</td>
+                                <td>@decimal.Parse(item.PriceVat).ToString("N0")</td>
+                                <td>@item.Packpage</td>
+                            </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5" />
+    <div dir="rtl" class="custom-table-container"> 
+        <h4 style="text-align:right">الخصائص</h4>
+
+    @if (Model.Descriptions != null && Model.Descriptions.Any())
+    {
+        @foreach (var desc in Model.Descriptions)
+        {
+                <div class="feature-box">
+                <h5>@desc.Title</h5>
+                <p>@desc.Details</p>
+            </div>
+        }
+    }
+    else
+    {
+        <p>لا توجد شروحات متاحة حالياً.</p>
+    }
+    </div>  
+</div>
+

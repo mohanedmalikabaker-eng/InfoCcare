@@ -1,0 +1,103 @@
+﻿@model IEnumerable<InfoCcare.Models.RoamingOp>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> ""مشغل التجوال  – Roaming Operators ""</h4>
+    </div>
+    <div class="table-search">
+    <input type="text"
+           id="countrySearch"
+               placeholder="Country Name..."
+           onkeyup="filterByCountry()" />
+</div>
+    <div class="custom-table-inner">
+    <table class="custom-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TapCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoamingParName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.McCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.McNtCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoamingServCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDateOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDateIn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TapCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoamingParName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.McCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.McNtCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoamingServCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDateOut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDateIn)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>
+
+<script>
+    function filterByCountry() {
+        let input = document.getElementById("countrySearch");
+        let filter = input.value.toUpperCase();
+        let table = document.querySelector(".custom-table");
+        let tr = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < tr.length; i++) { // نعدي الهيدر
+            let td = tr[i].getElementsByTagName("td")[4]; // عمود CountryName
+            if (td) {
+                let txtValue = td.textContent || td.innerText;
+                tr[i].style.display =
+                    txtValue.toUpperCase().indexOf(filter) > -1
+                        ? ""
+                        : "none";
+            }
+        }
+    }
+</script>

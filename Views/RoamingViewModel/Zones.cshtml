@@ -1,0 +1,70 @@
+﻿@model IEnumerable<InfoCcare.Models.Zone>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> "" Zone List ""</h4>
+        <div class="table-search">
+            <input type="text"
+                   id="countrySearch"
+                   placeholder="Country Name..."
+                   onkeyup="filterByCountry()" />
+        </div>
+    </div>
+    <table class="custom-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RomingPartnerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZoneNo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RomingPartnerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZoneNo)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+<script>
+    function filterByCountry() {
+        let input = document.getElementById("countrySearch");
+        let filter = input.value.toUpperCase();
+        let table = document.querySelector(".custom-table");
+        let tr = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < tr.length; i++) { // نعدي الهيدر
+            let td = tr[i].getElementsByTagName("td")[0]; // عمود CountryName
+            if (td) {
+                let txtValue = td.textContent || td.innerText;
+                tr[i].style.display =
+                    txtValue.toUpperCase().indexOf(filter) > -1
+                        ? ""
+                        : "none";
+            }
+        }
+    }
+</script>

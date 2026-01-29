@@ -1,0 +1,83 @@
+﻿@model IEnumerable<InfoCcare.Models.Dealer>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> ""مكاتب الوكلاء – Dealers Office""</h4>
+    </div>
+    <table class="custom-table" dir="rtl">
+    <thead>
+        <tr>
+            <th>
+              اسم التوكيل
+            </th>
+            <th>
+                المنطقة
+            </th>
+            <th>
+                المدينة
+            </th>
+            <th>
+                اسم المشرف
+            </th>
+            <th>
+                الموقع
+            </th>
+            <th>
+                استبدال
+            </th>
+            <th>
+                شرائح جديدة
+            </th>
+            <th>
+               الرصيد
+            </th>
+            <th>
+               حالة المكتب
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DealerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Region)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SimSwap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SimSales)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AirtimeSales)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+
+            
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

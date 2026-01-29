@@ -1,0 +1,120 @@
+﻿@model InfoCcare.Models.B2bPrepaidOfferViewModel
+
+@{
+
+    var DataCard = Model.Offers.Where(o => o.OffierType == "Data Card");
+    var InternetApn = Model.Offers.Where(o => o.OffierType == "APN");
+}
+
+@{
+    Layout = "_GradientLayout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="container mt-4">
+
+    <ul class="nav nav-tabs justify-content-center" id="prepaidTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="DataCard-tab" data-bs-toggle="tab" data-bs-target="#DataCard" type="button" role="tab">
+                🌐 باقات شرائح البيانات
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="InternetApn-tab" data-bs-toggle="tab" data-bs-target="#InternetApn" type="button" role="tab">
+                🚗 تتبع المركبات
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-3" id="prepaidTabsContent">
+
+        <!-- DC Daily Extra -->
+        <div class="tab-pane fade show active" id="DataCard" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center">""باقات شرائح البيانات اعمال الدفع المقدم – B2B Prepaid Data Card ""</h4>
+                </div>
+
+                <table class="custom-table" dir="rtl">
+                    <thead>
+                        <tr>
+                            <th>الباقة</th>
+                            <th>السعر (غير شامل الضريبة)</th>
+                            <th>الرمز</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in DataCard)
+                        {
+                            <tr>
+                                <td>@item.Package</td>
+                                <td>@item.PriceNoVat.ToString("N0")</td>
+                                <td>@item.Code</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Internet Apn -->
+        <div class="tab-pane fade" id="InternetApn" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center">
+                        "" اسعار باقات تتبع المركبات ونقاط البيع
+                        ""
+                    </h4>
+                </div>
+
+                <table class="custom-table" dir="rtl">
+                    <thead>
+                        <tr>
+                            <th>الباقة</th>
+                            <th>السعر (غير شامل الضريبة)</th>
+                            <th>الرمز</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in InternetApn)
+                        {
+                            <tr>
+                                <td>@item.Package</td>
+                                <td>@item.PriceNoVat.ToString("N0")</td>
+                                <td>@item.Code</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="my-5" />
+
+    <!-- Features (اختياري) -->
+    <div dir="rtl" class="custom-table-container">
+        <h4 style="text-align:right">الخصائص</h4>
+
+        @if (Model.Descriptions != null && Model.Descriptions.Any())
+        {
+            @foreach (var desc in Model.Descriptions)
+            {
+                <div class="feature-box">
+                    <h5>@desc.Title</h5>
+                    <p>@desc.Details</p>
+                </div>
+            }
+        }
+        else
+        {
+            <p>لا توجد شروحات متاحة حالياً.</p>
+        }
+    </div>
+
+</div>

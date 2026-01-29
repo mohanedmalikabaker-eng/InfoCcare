@@ -1,0 +1,48 @@
+﻿@model PrepaidDataViewModel
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> ""عروض باقـات انترنت شرائح البيانات – PrePaid Data Package Offers""</h4>
+    </div>
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>الرمز</th>
+                <th>السعر (شامل الضريبة)</th>
+                <th>السعر (غير شامل الضريبة)</th>
+                <th>الباقة</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.DataList)
+            {
+                <tr>
+                    <td>@item.Code</td>
+                    <td> @item.PriceVat.ToString("N0")</td>
+                    <td> @item.PriceNoVat.ToString("N0")</td>
+                    <td>@item.Package</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<hr />
+
+<div dir="rtl" class="custom-table-container">
+    <h4 style="text-align:right">الخصائص</h4>
+
+    @foreach (var desc in Model.Descriptions)
+    {
+        <div class="feature-box">
+            <h5>@desc.Title</h5>
+            <p>@desc.Details</p>
+        </div>
+    }
+</div>

@@ -1,0 +1,83 @@
+﻿@model InfoCcare.Models.Roaming
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Roaming</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Zone" class="control-label"></label>
+                <input asp-for="Zone" class="form-control" />
+                <span asp-validation-for="Zone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mb" class="control-label"></label>
+                <input asp-for="Mb" class="form-control" />
+                <span asp-validation-for="Mb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sms" class="control-label"></label>
+                <input asp-for="Sms" class="form-control" />
+                <span asp-validation-for="Sms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtc" class="control-label"></label>
+                <input asp-for="Mtc" class="form-control" />
+                <span asp-validation-for="Mtc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cbh" class="control-label"></label>
+                <input asp-for="Cbh" class="form-control" />
+                <span asp-validation-for="Cbh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lcl" class="control-label"></label>
+                <input asp-for="Lcl" class="form-control" />
+                <span asp-validation-for="Lcl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Inter" class="control-label"></label>
+                <input asp-for="Inter" class="form-control" />
+                <span asp-validation-for="Inter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thuraya" class="control-label"></label>
+                <input asp-for="Thuraya" class="form-control" />
+                <span asp-validation-for="Thuraya" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Inmarsat" class="control-label"></label>
+                <input asp-for="Inmarsat" class="form-control" />
+                <span asp-validation-for="Inmarsat" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Vat" class="control-label"></label>
+                    <select asp-for="Vat" class="form-control">
+                        <option value="WITH">WITH (شامل الضريبة)</option>
+                        <option value="WITHOUT">WITHOUT (غير شامل الضريبة)</option>
+                    </select>
+                    <span asp-validation-for="Vat" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,61 @@
+﻿@model InfoCcare.Models.PrepaidOffer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PrepaidOffer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Packpage" class="control-label"></label>
+                <input asp-for="Packpage" class="form-control" />
+                <span asp-validation-for="Packpage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceNoVat" class="control-label"></label>
+                <input asp-for="PriceNoVat" class="form-control" />
+                <span asp-validation-for="PriceNoVat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceVat" class="control-label"></label>
+                <input asp-for="PriceVat" class="form-control" />
+                <span asp-validation-for="PriceVat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OffierType" class="control-label"></label>
+                <select asp-for="OffierType" class="form-control">
+                    <option value="Voice bundles"> -- Select Offer --</option>
+                    <option value="Voice bundles">Voice bundles</option>
+                    <option value="Internet bundles">Internet bundles</option>
+                    <option value="Voice bundles Gift">Voice bundles Gift</option>
+                    <option value="Internet bundles Gift">Internet bundles Gift</option>
+                </select>
+                <span asp-validation-for="OffierType" class="text-danger"></span>
+            </div>
+     
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

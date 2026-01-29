@@ -1,0 +1,23 @@
+﻿@model InfoCcare.Models.ApplicationUser
+
+<h3>Assign Role</h3>
+
+<form asp-action="AssignRole" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="userId" value="@Model.Id" />
+
+    <div class="form-group">
+        <label>Role</label>
+        <select name="role" class="form-control">
+            @foreach (var role in ViewBag.Roles)
+            {
+                <option value="@role.Name">@role.Name</option>
+            }
+        </select>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

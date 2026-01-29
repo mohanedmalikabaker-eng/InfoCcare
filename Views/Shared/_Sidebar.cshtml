@@ -1,0 +1,215 @@
+﻿@{
+    var controller = (ViewContext.RouteData.Values["controller"]?.ToString() ?? "").ToLower();
+    var action = (ViewContext.RouteData.Values["action"]?.ToString() ?? "").ToLower();
+
+    string isActive(string c, string a = "") =>
+        controller == c.ToLower() && (string.IsNullOrEmpty(a) || action == a.ToLower())
+            ? "is-active" : "";
+}
+
+<aside class="sidebar">
+
+    <div class="sidebar__profile">
+        <div class="profile__avatar">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.6" />
+            </svg>
+        </div>
+        <div class="profile__name">Muhaned Malik </div>
+        <div class="profile__role">Indirect Salse</div>
+    </div>
+
+    <nav class="sidebar__nav">
+
+        <a class="nav-item @isActive("home", "index")" asp-controller="Home" asp-action="Index">
+            <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"
+                          stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                </svg>
+            </span>
+            <span class="nav-text">Home</span>
+        </a>
+
+        <button class="nav-group" type="button" data-group="prepaid" aria-expanded="false">
+            <span>Prepaid</span>
+            <span class="chev">▾</span>
+        </button>
+
+        <div class="nav-subtree" data-subtree="prepaid">
+            <a class="sub-item" asp-controller="PrepaidOfferViewModel" asp-action="Index">
+                <span class="tree-line"></span>
+                <span>Offers</span>
+            </a>
+            <a class="sub-item" asp-controller="TaktikPrepaidViewModel" asp-action="Index">
+                <span class="tree-line"></span>
+                <span>TakTik</span>
+            </a>
+            <a class="sub-item" asp-controller="PrepaidDataViewModel" asp-action="Index">
+                <span class="tree-line"></span>
+                <span>Data Card</span>
+            </a>
+            <a class="sub-item" asp-controller="TariffViewModel" asp-action="PrepaidTariffs">
+                <span class="tree-line"></span>
+                <span>Tariff</span>
+            </a>
+        </div>
+
+        <button class="nav-group" type="button" data-group="postpaid" aria-expanded="false">
+            <span>Postpaid</span>
+            <span class="chev">▾</span>
+        </button>
+
+        <div class="nav-subtree" data-subtree="postpaid">
+
+            <a class="sub-item" asp-controller="PostpaidOfferViewModel" asp-action="Index">
+                <span class="tree-line"></span>
+                <span>Offers</span>
+            </a>
+
+            <a class="sub-item" asp-controller="TaktikPostpaidViewModel" asp-action="Index">
+                <span class="tree-line"></span>
+                <span>TakTik</span>
+            </a>
+
+            <a class="sub-item" asp-controller="TariffViewModel" asp-action="PostpaidTariffs">
+                <span class="tree-line"></span>
+                <span>Tariff</span>
+            </a>
+        </div>
+
+
+        <!-- Business -->
+        <button class="nav-group" type="button" data-group="Business" aria-expanded="false">
+            <span>Business</span>
+            <span class="chev">▾</span>
+        </button>
+
+        <div class="nav-subtree" data-subtree="Business">
+
+            <!-- B2B Prepaid -->
+            <button class="nav-group sub-group" type="button" data-group="B2BPrepaid" aria-expanded="false">
+                <span>B2B Prepaid</span>
+                <span class="chev">▾</span>
+            </button>
+
+            <div class="nav-subtree" data-subtree="B2BPrepaid">
+
+                <!-- Offers -->
+                <a class="sub-item"
+                   asp-controller="B2bPrepaidOfferViewModel"
+                   asp-action="B2bPrepaidOffer">
+                    <span class="tree-line"></span>
+                    <span>Offers</span>
+                </a>
+                <!-- TakTik -->
+                <a class="sub-item"
+                   asp-controller="TaktikB2BPrepaidOfferViewModel"
+                   asp-action="TaktikB2BPrepaid">
+                    <span class="tree-line"></span>
+                    <span>TakTik</span>
+                </a>
+                <!-- Data Card & APN -->
+                <a class="sub-item"
+                   asp-controller="B2bPrepaidOfferViewModel"
+                   asp-action="DataApnCard">
+                    <span class="tree-line"></span>
+                    <span>APN & Data Card</span>
+                </a>
+                <!-- Tariff -->
+                <a class="sub-item"
+                   asp-controller="TariffViewModel"
+                   asp-action="B2BPrepaidTariffs">
+                    <span class="tree-line"></span>
+                    <span>Tariff</span>
+                </a>
+            </div>
+
+            <!-- B2B Postpaid -->
+            <button class="nav-group sub-group" type="button" data-group="B2BPostpaid" aria-expanded="false">
+                <span>B2B Postpaid</span>
+                <span class="chev">▾</span>
+            </button>
+
+            <div class="nav-subtree" data-subtree="B2BPostpaid">
+
+                <!-- Offers -->
+                <a class="sub-item"
+                   asp-controller="B2bPostpaidOfferViewModel"
+                   asp-action="B2bPostpaidOffer">
+                    <span class="tree-line"></span>
+                    <span>Offers</span>
+                </a>
+                <!-- TakTik -->
+                <a class="sub-item"
+                   asp-controller="TaktikB2BPostpaidOfferViewModel"
+                   asp-action="TaktikB2BPostpaid">
+                    <span class="tree-line"></span>
+                    <span>TakTik</span>
+                </a>
+                <!-- Data Card & Extra -->
+                <a class="sub-item"
+                   asp-controller="B2bPostpaidOfferViewModel"
+                   asp-action="DataCardExtra">
+                    <span class="tree-line"></span>
+                    <span>DataCard</span>
+                </a>
+                <!-- Tariff -->
+                <a class="sub-item"
+                   asp-controller="TariffViewModel"
+                   asp-action="B2BPostpaidTariffs">
+                    <span class="tree-line"></span>
+                    <span>Tariff</span>
+                </a>
+            </div>
+        </div>
+
+        <button class="nav-group" type="button" data-group="Roaming" aria-expanded="false">
+            <span>Roaming</span>
+            <span class="chev">▾</span>
+        </button>
+
+        <div class="nav-subtree" data-subtree="Roaming">
+
+            <a class="sub-item" asp-controller="RoamingViewModel" asp-action="RoamingTariff">
+                <span class="tree-line"></span>
+                <span>Roaming Tariff</span>
+            </a>
+
+            <a class="sub-item" asp-controller="RoamingViewModel" asp-action="RoamingOps">
+                <span class="tree-line"></span>
+                <span>Roaming Operators</span>
+            </a>
+
+            <a class="sub-item" asp-controller="RoamingViewModel" asp-action="Zones">
+                <span class="tree-line"></span>
+                <span>Zones</span>
+            </a>
+        </div> 
+
+        <a class="nav-group nav-link-like"
+           asp-controller="RetailShopsView" asp-action="Index">
+            <span>RetailShops</span>
+        </a>
+
+        <a class="nav-group nav-link-like"
+           asp-controller="DealersView" asp-action="Index">
+            <span>Dealers Office</span>
+        </a>
+
+        <a class="nav-group nav-link-like"
+           asp-controller="LinksViewModel" asp-action="Index">
+            <span>Links</span>
+        </a>
+
+        <a class="nav-group nav-link-like"
+           asp-controller="FaqsViewModel" asp-action="Index">
+            <span>FAQs</span>
+        </a>
+     
+
+    </nav>
+
+
+</aside>

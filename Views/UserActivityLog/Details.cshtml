@@ -1,0 +1,21 @@
+﻿
+@model InfoCcare.Models.AuditLog
+
+<h2>Audit Log Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <div class="mb-2"><b>ID:</b> @Model.Id</div>
+        <div class="mb-2"><b>User Email:</b> @Model.UserEmail</div>
+        <div class="mb-2"><b>Entity:</b> @Model.EntityName</div>
+        <div class="mb-2"><b>Action:</b> @Model.Action</div>
+        <div class="mb-3"><b>Date:</b> @Model.TimesTamp.ToString("yyyy-MM-dd HH:mm:ss")</div>
+
+        <hr />
+
+        <h5>Changes</h5>
+        <pre style="white-space: pre-wrap;">@Model.Changes</pre>
+
+        <a asp-action="Index" class="btn btn-secondary mt-2">Back</a>
+    </div>
+</div>

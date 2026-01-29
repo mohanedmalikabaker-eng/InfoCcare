@@ -1,0 +1,205 @@
+﻿@model InfoCcare.Models.TaktikPrepaidOfferViewModel
+
+@{
+    Layout = "_GradientLayout";
+
+    var flex = Model.Offers.Where(o => o.FlexType == "FLEX");
+    var flexPlus = Model.Offers.Where(o => o.FlexType == "FLEX PLUS");
+    var flexGift = Model.Offers.Where(o => o.FlexType == "FLEX GIFT");
+    var flexGiftPlus = Model.Offers.Where(o => o.FlexType == "FLEX GIFT PLUS");
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="container mt-4">
+
+    <ul class="nav nav-tabs justify-content-center" id="taktikTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="flex-tab" data-bs-toggle="tab" data-bs-target="#flex"
+                    type="button" role="tab">
+                📦 تك تك
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="flexplus-tab" data-bs-toggle="tab" data-bs-target="#flexplus"
+                    type="button" role="tab">
+                ⭐ تك تك بلص
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="flexgift-tab" data-bs-toggle="tab" data-bs-target="#flexgift"
+                    type="button" role="tab">
+                🎁 اهداء تك تك
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="flexgiftplus-tab" data-bs-toggle="tab" data-bs-target="#flexgiftplus"
+                    type="button" role="tab">
+                🎁⭐ اهدا تك تك بلس
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-3" id="taktikTabsContent">
+
+        <!-- FLEX -->
+        <div class="tab-pane fade show active" id="flex" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center">"" عروض باقات تك تك – TakTik Offers""</h4>
+                </div>
+
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>رمز التنشيط</th>
+                            <th>السعر (بدون ضريبة)</th>
+                            <th>السعر (مع الضريبة)</th>
+                            <th>الوحدات</th>
+                            <th>الباقة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in flex)
+                        {
+                            <tr>
+                                <td>@item.Code</td>
+                                <td>@item.PriceVatExluded.ToString("N0")</td>
+                                <td>@item.PriceVatIncluded.ToString("N0")</td>
+                                <td>@item.Units</td>
+                                <td>@item.Bundile</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FLEX PLUS -->
+        <div class="tab-pane fade" id="flexplus" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center">""جدول عروض باقات تك تك – FLEX PLUS Offers""</h4>
+                </div>
+
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>رمز التنشيط</th>
+                            <th>السعر (بدون ضريبة)</th>
+                            <th>السعر (مع الضريبة)</th>
+                            <th>الوحدات</th>
+                            <th>الباقة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in flexPlus)
+                        {
+                            <tr>
+                                <td>@item.Code</td>
+                                <td>@item.PriceVatExluded.ToString("N0")</td>
+                                <td>@item.PriceVatIncluded.ToString("N0")</td>
+                                <td>@item.Units</td>
+                                <td>@item.Bundile</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FLEX GIFT -->
+        <div class="tab-pane fade" id="flexgift" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center">""جدول هدايا باقات تك تك – FLEX GIFT Offers""</h4>
+                </div>
+
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>رمز التنشيط</th>
+                            <th>السعر (بدون ضريبة)</th>
+                            <th>السعر (مع الضريبة)</th>
+                            <th>الوحدات</th>
+                            <th>الباقة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in flexGift)
+                        {
+                            <tr>
+                                <td>@item.Code</td>
+                                <td>@item.PriceVatExluded.ToString("N0")</td>
+                                <td>@item.PriceVatIncluded.ToString("N0")</td>
+                                <td>@item.Units</td>
+                                <td>@item.Bundile</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FLEX GIFT PLUS -->
+        <div class="tab-pane fade" id="flexgiftplus" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center">""جدول هدايا باقات تك تك – FLEX GIFT PLUS Offers""</h4>
+                </div>
+
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>الرمز</th>
+                            <th>السعر (بدون ضريبة)</th>
+                            <th>السعر (مع الضريبة)</th>
+                            <th>الوحدات</th>
+                            <th>الباقة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in flexGiftPlus)
+                        {
+                            <tr>
+                                <td>@item.Code</td>
+                                <td>@item.PriceVatExluded.ToString("N0")</td>
+                                <td>@item.PriceVatIncluded.ToString("N0")</td>
+                                <td>@item.Units</td>
+                                <td>@item.Bundile</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="my-5" />
+
+    <div dir="rtl" class="custom-table-container">
+        <h4 style="text-align:right">الخصائص</h4>
+
+        @if (Model.Descriptions != null && Model.Descriptions.Any())
+        {
+            @foreach (var desc in Model.Descriptions)
+            {
+                <div class="feature-box">
+                    <h5>@desc.Title</h5>
+                    <p>@Html.Raw(desc.Details)</p>
+                </div>
+            }
+        }
+        else
+        {
+            <p>لا توجد شروحات متاحة حالياً.</p>
+        }
+    </div>
+
+</div>

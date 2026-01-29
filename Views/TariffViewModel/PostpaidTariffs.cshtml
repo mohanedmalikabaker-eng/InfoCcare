@@ -1,0 +1,58 @@
+﻿@model InfoCcare.Models.TariffViewModel
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<!-- جدول المكالمات -->
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> ""Postpaid Call Tariff – تعرفة المكالمات الدفع الاجل""</h4>
+    </div>
+    <table class="custom-table" dir="rtl">
+        <thead">
+            <tr>
+                <th>المكالمات</th>
+                <th>السعر (غير شامل الضريبة)</th>
+                <th>التعرفة بالضريبة</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Call)
+                {
+                    <tr>
+                        <td>@item.CallSms</td>
+                        <td>@item.PriceNoVat.ToString("N0")</td>
+                        <td>@item.PriceVat.ToString("N0")</td>
+                    </tr>
+                }
+            </tbody>
+    </table>
+</div>
+<!-- جدول الرسائل -->
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> ""Postpaid SMS Tariff – تعرفة الرسائل النصية للدفع الاجل""</h4>
+    </div>
+    <table class="custom-table" dir="rtl">
+        <thead>
+            <tr>
+                <th>الرسائل النصية</th>
+                <th>السعر (غير شامل الضريبة)</th>
+                <th>التعرفة بالضريبة</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Sms)
+            {
+                <tr>
+                    <td>@item.CallSms</td>
+                    <td>@item.PriceNoVat.ToString("N0")</td>
+                    <td>@item.PriceVat.ToString("N0")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,101 @@
+﻿@model IEnumerable<InfoCcare.Models.Roaming>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Zone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cbh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lcl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thuraya)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inmarsat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cbh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lcl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thuraya)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inmarsat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

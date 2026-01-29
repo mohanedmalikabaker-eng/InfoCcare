@@ -1,0 +1,89 @@
+﻿@model IEnumerable<InfoCcare.Models.RoamingOp>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TapCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoamingParName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.McCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.McNtCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoamingServCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDateOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDateIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TapCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoamingParName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.McCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.McNtCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoamingServCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDateOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDateIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

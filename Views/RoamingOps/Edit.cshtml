@@ -1,0 +1,79 @@
+﻿@model InfoCcare.Models.RoamingOp
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>RoamingOp</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="TapCode" class="control-label"></label>
+                <input asp-for="TapCode" class="form-control" />
+                <span asp-validation-for="TapCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoamingParName" class="control-label"></label>
+                <input asp-for="RoamingParName" class="form-control" />
+                <span asp-validation-for="RoamingParName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="McCode" class="control-label"></label>
+                <input asp-for="McCode" class="form-control" />
+                <span asp-validation-for="McCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="McNtCode" class="control-label"></label>
+                <input asp-for="McNtCode" class="form-control" />
+                <span asp-validation-for="McNtCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryName" class="control-label"></label>
+                <input asp-for="CountryName" class="form-control" />
+                <span asp-validation-for="CountryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoamingServCode" class="control-label"></label>
+                <input asp-for="RoamingServCode" class="form-control" />
+                <span asp-validation-for="RoamingServCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDateOut" class="control-label"></label>
+                <input asp-for="StartDateOut" class="form-control" />
+                <span asp-validation-for="StartDateOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDateIn" class="control-label"></label>
+                <input asp-for="StartDateIn" class="form-control" />
+                <span asp-validation-for="StartDateIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedOn" class="control-label"></label>
+                <input asp-for="CreatedOn" class="form-control" />
+                <span asp-validation-for="CreatedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedById" class="control-label"></label>
+                <select asp-for="CreatedById" class="form-control" asp-items="ViewBag.CreatedById"></select>
+                <span asp-validation-for="CreatedById" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

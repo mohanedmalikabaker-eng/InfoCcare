@@ -1,0 +1,53 @@
+﻿@model IEnumerable<InfoCcare.Models.RetailShop>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> ""مواعيد عمل المكاتب – Franchise Working Time ""</h4>
+        </div>
+    <table class="custom-table">
+    <thead>
+        <tr>
+            <th>المدينة</th>
+            <th>الموقع</th>
+            <th>مواعيد السبت - الخميس</th>
+            <th>مواعيد الجمعة</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        @foreach (var sectorGroup in Model.GroupBy(m => m.Sector))
+        {
+        
+            
+            <!-- عنوان القطاع -->
+                <tr class="table-primary">
+                    <td colspan="4" style="text-align:center;">
+                        <strong style="font-size:1.4rem;">
+                            @sectorGroup.Key
+                        </strong>
+                    </td>
+                </tr>
+
+
+            @foreach (var cityGroup in sectorGroup.GroupBy(m => m.City))
+            {
+                foreach (var item in cityGroup)
+                {
+                    <tr>
+                        <td>@item.City</td>
+                        <td>@item.Location</td>
+                        <td>@item.SatToTheTime</td>
+                        <td>@item.FridayTime</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+</div>

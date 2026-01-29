@@ -1,0 +1,163 @@
+﻿@model IEnumerable<InfoCcare.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Users Management";
+}
+
+<h2 class="mb-3">Users Management</h2>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <!-- Search -->
+    <form method="get" class="position-relative" style="width:500px;">
+        <input type="text"
+               name="search"
+               value="@Context.Request.Query["search"]"
+               class="form-control ps-5"
+               placeholder="Search users..." />
+
+        <span class="position-absolute top-50 start-0 translate-middle-y ps-3 text-muted">
+            🔍
+        </span>
+    </form>
+
+    <!-- Create -->
+    <a asp-action="Create" class="btn btn-primary">
+        + New Account
+    </a>
+
+</div>
+
+
+<table class="table table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Location</th>
+            <th>Department</th>
+            <th class="text-center" style="width:220px;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted">
+                    No users found
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.Location</td>
+                    <td>@item.Department</td>
+                    <td class="text-center">
+
+                        <!-- Update -->
+                        <a asp-action="Edit"
+                           asp-route-id="@item.Id"
+                           class="btn btn-sm btn-warning"
+                           data-bs-toggle="tooltip"
+                           title="Update User">
+                            ✏️
+                        </a>
+
+                        <!-- Assign Role -->
+                        <a asp-action="AssignRole"
+                           asp-route-id="@item.Id"
+                           class="btn btn-sm btn-primary"
+                           data-bs-toggle="tooltip"
+                           title="Assign Role">
+                            👤
+                        </a>
+
+                        <!-- Reset Password (IT Only – logic لاحقاً) -->
+                        <a asp-action="ResetPassword"
+                           asp-route-id="@item.Id"
+                           class="btn btn-sm btn-secondary"
+                           data-bs-toggle="tooltip"
+                           title="Reset Password">
+                            🔁
+                        </a>
+
+                        <!-- Lock / Unlock (جاهز للمستقبل) -->
+                        <button class="btn btn-sm btn-dark"
+                                data-bs-toggle="tooltip"
+                                title="Lock / Unlock User">
+                            🔒
+                        </button>
+
+                        <!-- Delete -->
+                        <a asp-action="Delete"
+                           asp-route-id="@item.Id"
+                           class="btn btn-sm btn-danger"
+                           data-bs-toggle="tooltip"
+                           title="Delete User"
+                           onclick="return confirm('Are you sure you want to delete this user?');">
+                            🗑️
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<!-- Pagination -->
+<nav class="d-flex justify-content-between align-items-center">
+    <span class="text-muted">
+        Page @ViewBag.CurrentPage of @ViewBag.TotalPages
+    </span>
+
+    <ul class="pagination mb-0">
+
+        <!-- Previous -->
+        <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+            <a class="page-link"
+               asp-action="Index"
+               asp-route-page="@(ViewBag.CurrentPage - 1)"
+               asp-route-search="@ViewBag.Search">
+                Previous
+            </a>
+        </li>
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-page="@i"
+                   asp-route-search="@ViewBag.Search">
+                    @i
+                </a>
+            </li>
+        }
+
+        <!-- Next -->
+        <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+            <a class="page-link"
+               asp-action="Index"
+               asp-route-page="@(ViewBag.CurrentPage + 1)"
+               asp-route-search="@ViewBag.Search">
+                Next
+            </a>
+        </li>
+
+    </ul>
+</nav>
+
+
+@section Scripts {
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+}

@@ -1,0 +1,21 @@
+﻿@model InfoCcare.Models.ApplicationUser
+
+<h3>Are you sure you want to delete this user?</h3>
+
+<div class="mb-3">
+    <strong>Name:</strong> @Model.Name <br />
+    <strong>Email:</strong> @Model.Email <br />
+    <strong>Department:</strong> @Model.Department
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">
+        Yes, Delete
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+</form>

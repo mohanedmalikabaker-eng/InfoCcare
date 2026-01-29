@@ -1,0 +1,58 @@
+﻿html, body {
+    min-height: 100%;
+}
+
+.rad-bg {
+    min-height: 100vh;
+    background: radial-gradient(900px 600px at 78% 12%, #0b7aa3, transparent 70%), radial-gradient(850px 600px at 25% 28%, #0b4f7b, transparent 65%), radial-gradient(900px 700px at 55% 55%, rgba(255,255,255,0.06), transparent 55%), radial-gradient(850px 800px at 30% 92%, #1b0f3b, transparent 72%), linear-gradient(180deg, #0b4f7b, #0a2a58);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+    /* خلي أي container شفاف */
+    .rad-bg .container,
+    .rad-bg main {
+        background: transparent;
+    }
+    /* =========================
+   FIXED GLASS NAVBAR
+   ========================= */
+    .rad-bg .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1050;
+        background: linear-gradient( 135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.12) ) !important;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255,255,255,0.35);
+        box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    }
+
+        /* نصوص النافبار */
+        .rad-bg .navbar .navbar-brand,
+        .rad-bg .navbar .nav-link {
+            color: #ffffff !important;
+            font-weight: 500;
+        }
+
+            /* Hover */
+            .rad-bg .navbar .nav-link:hover {
+                color: rgba(255,255,255,0.85) !important;
+            }
+
+    /* زر الموبايل */
+    .rad-bg .navbar-toggler {
+        border-color: rgba(255,255,255,0.6);
+    }
+
+    .rad-bg .navbar-toggler-icon {
+        filter: invert(1);
+    }
+    .rad-bg main {
+        padding-top: 80px; /* عدّلها حسب ارتفاع النافبار */
+    }
+
+
