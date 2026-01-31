@@ -1,0 +1,33 @@
+﻿@model IEnumerable<InfoCcare.Models.MazayaExtraUnits>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> "" Extra Units""</h4>
+    </div>
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Extra Units</th>
+                <th>Price Vat Ex</th>
+                <th>Price Vat In</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ExtraUnits</td>
+                    <td>@decimal.Parse(item.PriceVatEx).ToString("N0")</td>
+                    <td>@decimal.Parse(item.PriceVatIn).ToString("N0")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -36,6 +36,8 @@ namespace InfoCcare.Data
         public DbSet<B2bPostpaidOffer> B2bPostpaidOffer { get; set; }
         public DbSet<TaktikB2BPostpaid> TaktikB2BPostpaid { get; set; }
         public DbSet<Mazaya> Mazaya { get; set; }
+        public DbSet<MazayaCost> MazayaCost { get; set; }
+        public DbSet<MazayaExtraUnits> MazayaExtraUnits { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -173,6 +175,18 @@ namespace InfoCcare.Data
            .WithMany()
            .HasForeignKey(c => c.CreatedById)
            .OnDelete(DeleteBehavior.Restrict);
+
+          builder.Entity<MazayaCost>()
+         .HasOne(c => c.CreatedBy)
+         .WithMany()
+         .HasForeignKey(c => c.CreatedById)
+         .OnDelete(DeleteBehavior.Restrict);
+
+          builder.Entity<MazayaExtraUnits>()
+         .HasOne(c => c.CreatedBy)
+         .WithMany()
+         .HasForeignKey(c => c.CreatedById)
+         .OnDelete(DeleteBehavior.Restrict);
 
         }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

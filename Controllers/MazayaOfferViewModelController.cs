@@ -14,7 +14,7 @@ namespace InfoCcare.Controllers
             _context = context;
         }
 
-        // GET: B2b Prepaid Offer
+        // GET: Mazaya Offer
         public IActionResult MazayaOffer()
         {
             var viewModel = new MazayaOfferViewModel

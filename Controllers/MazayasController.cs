@@ -9,7 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace InfoCcare.Data.Migrations
+namespace InfoCcare.Controllers
 {
     public class MazayasController : Controller
     {

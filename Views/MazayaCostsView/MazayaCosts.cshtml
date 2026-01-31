@@ -1,0 +1,37 @@
+﻿@model IEnumerable<InfoCcare.Models.MazayaCost>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> "" Cost Structure""</h4>
+    </div>
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Plan Name</th>
+                <th>Offer Price</th>
+                <th>SIM Price</th>
+                <th>CL</th>
+                <th>Price Vat Include</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.PlanName</td>
+                    <td> @item.OfferPrice.ToString("N0")</td>
+                    <td> @item.SimPrice.ToString("N0")</td>
+                    <td>@item.Cl.ToString("N0")</td>
+                    <td>@item.PriceVatInclude.ToString("N0")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
