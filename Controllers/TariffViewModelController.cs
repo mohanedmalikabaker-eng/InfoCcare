@@ -111,5 +111,33 @@ namespace InfoCcare.Controllers
 
             return View(vm);
         }
+
+        //Mazaya
+        public async Task<IActionResult> MazayaTariffs()
+        {
+            var MazayaTariffs = await _context.Tariff
+                .Where(t => t.Segment.Title == "Mazaya")
+                .ToListAsync();
+
+            var calls = MazayaTariffs
+                .Where(t => t.CallSms.Trim().StartsWith("المكالمات"))
+                .ToList();
+
+            var sms = MazayaTariffs
+                .Where(t => t.CallSms.StartsWith("رسالة") || t.CallSms.StartsWith("الرسائل"))
+                .ToList();
+
+            var cug = MazayaTariffs
+               .Where(t => t.CallSms.StartsWith("CUG") || t.CallSms.StartsWith("cug"))
+               .ToList();
+
+            var vm = new TariffViewModel
+            {
+                Call = calls,
+                Sms = sms
+            };
+
+            return View(vm);
+        }
     }
 }

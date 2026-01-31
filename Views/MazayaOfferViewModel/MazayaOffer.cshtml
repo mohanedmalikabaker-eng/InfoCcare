@@ -1,0 +1,183 @@
+﻿@model InfoCcare.Models.MazayaOfferViewModel
+
+@{
+    var silver = Model.Offers.Where(o => o.Name == "Silver");
+    var golden = Model.Offers.Where(o => o.Name == "Golden");
+    var platinum = Model.Offers.Where(o => o.Name == "Platinum");
+    var diamond = Model.Offers.Where(o => o.Name == "Diamond");
+}
+
+@{
+    Layout = "_GradientLayout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="container mt-4">
+
+    <ul class="nav nav-tabs justify-content-center" id="mazayaTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="silver-tab" data-bs-toggle="tab" data-bs-target="#silver" type="button" role="tab">
+             الحذمة الفضية
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="golden-tab" data-bs-toggle="tab" data-bs-target="#golden" type="button" role="tab">
+                الحذمة الذهبية
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="platinum-tab" data-bs-toggle="tab" data-bs-target="#platinum" type="button" role="tab">
+                الحذمة البلاتينية
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="diamond-tab" data-bs-toggle="tab" data-bs-target="#diamond" type="button" role="tab">
+                الحذمة الماسية
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-3" id="mazayaTabsContent">
+
+        <!-- silver -->
+        <div class="tab-pane fade show active" id="silver" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center">""الحذمة الفضية – Silver Service""</h4>
+                </div>
+                <table class="custom-table" dir="rtl">
+                    <thead>
+                        <tr>
+                            <th>الخذمة</th>
+                            <th>تفاصيل العرض</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in silver)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td style="white-space: pre-line;">
+                                    @item.Desc
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Golden -->
+        <div class="tab-pane fade" id="golden" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center">""الحذمة الذهبية – Golden Service""</h4>
+                </div>
+                <table class="custom-table" dir="rtl">
+                    <thead>
+                        <tr>
+                            <th>الخذمة</th>
+                            <th>تفاصيل العرض</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in golden)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td style="white-space: pre-line;">
+                                    @item.Desc
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Platinum -->
+        <div class="tab-pane fade" id="platinum" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center">""الحذمة البلاتينية – Platinum Service""</h4>
+                </div>
+                <table class="custom-table" dir="rtl">
+                    <thead>
+                        <tr>
+                            <th>الخذمة</th>
+                            <th>تفاصيل العرض</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in platinum)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td style="white-space: pre-line;">
+                                    @item.Desc
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Diamond -->
+        <div class="tab-pane fade" id="diamond" role="tabpanel">
+            <div class="custom-table-container">
+                <div class="align-items-md-center">
+                    <h4 style="text-align:center">""الحذمة الماسية – Diamond Service""</h4>
+                </div>
+                <table class="custom-table" dir="rtl">
+                    <thead>
+                        <tr>
+                            <th>الخذمة</th>
+                            <th>تفاصيل العرض</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in diamond)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td style="white-space: pre-line;">
+                                    @item.Desc
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="my-5" />
+
+    <div dir="rtl" class="custom-table-container">
+        <h4 style="text-align:right">الخصائص</h4>
+
+        @if (Model.Descriptions != null && Model.Descriptions.Any())
+        {
+            @foreach (var desc in Model.Descriptions)
+            {
+                <div class="feature-box">
+                    <h5>@desc.Title</h5>
+                    <p>@desc.Details</p>
+                </div>
+            }
+        }
+        else
+        {
+            <p>لا توجد شروحات متاحة حالياً.</p>
+        }
+    </div>
+
+</div>

@@ -36,7 +36,7 @@
             <span>Prepaid</span>
             <span class="chev">▾</span>
         </button>
-
+        <!-- Prepaid -->
         <div class="nav-subtree" data-subtree="prepaid">
             <a class="sub-item" asp-controller="PrepaidOfferViewModel" asp-action="Index">
                 <span class="tree-line"></span>
@@ -55,7 +55,7 @@
                 <span>Tariff</span>
             </a>
         </div>
-
+        <!-- Postpaid -->
         <button class="nav-group" type="button" data-group="postpaid" aria-expanded="false">
             <span>Postpaid</span>
             <span class="chev">▾</span>
@@ -79,6 +79,24 @@
             </a>
         </div>
 
+        <!-- Mazaya -->
+        <button class="nav-group" type="button" data-group="mazaya" aria-expanded="false">
+            <span>Mazaya</span>
+            <span class="chev">▾</span>
+        </button>
+
+        <div class="nav-subtree" data-subtree="mazaya">
+
+            <a class="sub-item" asp-controller="MazayaOfferViewModel" asp-action="MazayaOffer">
+                <span class="tree-line"></span>
+                <span>Offers</span>
+            </a>
+
+            <a class="sub-item" asp-controller="TariffViewModel" asp-action="MazayaTariffs">
+                <span class="tree-line"></span>
+                <span>Tariff</span>
+            </a>
+        </div>
 
         <!-- Business -->
         <button class="nav-group" type="button" data-group="Business" aria-expanded="false">

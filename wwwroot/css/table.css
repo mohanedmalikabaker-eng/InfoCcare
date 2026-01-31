@@ -214,3 +214,24 @@ table.custom-table {
     .custom-table-inner::-webkit-scrollbar-thumb:hover {
         background: rgba(255,255,255,0.55);
     }
+
+.vertical-table {
+    width: 100%;
+}
+
+    .vertical-table th {
+        width: 160px;
+        text-align: right;
+        vertical-align: top;
+        opacity: 0.9;
+    }
+
+    .vertical-table td {
+        text-align: right;
+        vertical-align: top;
+    }
+
+.plan-desc {
+    white-space: pre-line; /* يحترم Enter */
+    line-height: 1.9;
+}
