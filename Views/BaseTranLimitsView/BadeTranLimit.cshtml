@@ -1,0 +1,35 @@
+﻿@model IEnumerable<InfoCcare.Models.BaseTranLimits>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> " Cash Out , Voucher , Bank Transfer""</h4>
+    </div>
+    <table class="custom-table" dir="rtl">
+        <thead>
+            <tr>
+                <th>Transaction Limits</th>
+                <th>Normal Wallet</th>
+                <th>Silver Wallet</th>
+                <th>Golden Wallet</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TransactionLimits</td>
+                    <td>@decimal.Parse(item.Normal).ToString("N0")</td>
+                    <td>@decimal.Parse(item.Silver).ToString("N0")</td>
+                    <td>@item.Golden</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

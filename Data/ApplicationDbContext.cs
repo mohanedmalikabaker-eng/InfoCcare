@@ -38,6 +38,9 @@ namespace InfoCcare.Data
         public DbSet<Mazaya> Mazaya { get; set; }
         public DbSet<MazayaCost> MazayaCost { get; set; }
         public DbSet<MazayaExtraUnits> MazayaExtraUnits { get; set; }
+        public DbSet<Bade> Bade { get; set; }
+        public DbSet<BadeFees> BadeFees { get; set; }
+        public DbSet<BaseTranLimits> BaseTranLimits { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -187,6 +190,24 @@ namespace InfoCcare.Data
          .WithMany()
          .HasForeignKey(c => c.CreatedById)
          .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Bade>()
+            .HasOne(c => c.CreatedBy)
+            .WithMany()
+            .HasForeignKey(c => c.CreatedById)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<BadeFees>()
+          .HasOne(c => c.CreatedBy)
+          .WithMany()
+          .HasForeignKey(c => c.CreatedById)
+          .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<BaseTranLimits>()
+            .HasOne(c => c.CreatedBy)
+            .WithMany()
+            .HasForeignKey(c => c.CreatedById)
+            .OnDelete(DeleteBehavior.Restrict);
 
         }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

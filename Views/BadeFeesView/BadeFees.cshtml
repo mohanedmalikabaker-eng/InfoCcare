@@ -1,0 +1,35 @@
+﻿@model IEnumerable<InfoCcare.Models.BadeFees>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> " Cash Out , Voucher , Bank Transfer""</h4>
+    </div>
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Start</th>
+                <th>End</th>
+                <th>Avg</th>
+                <th>Fees</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@decimal.Parse(item.Star).ToString("N0")</td>
+                    <td>@decimal.Parse(item.End).ToString("N0")</td>
+                    <td>@decimal.Parse(item.Avg).ToString("N0")</td>
+                    <td>@decimal.Parse(item.Fees).ToString("N0")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

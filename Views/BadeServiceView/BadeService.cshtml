@@ -1,0 +1,35 @@
+﻿@model IEnumerable<InfoCcare.Models.Bade>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> ""خدمات بيدي – Bade Service""</h4>
+    </div>
+
+    <div class="accordion" id="faqAccordion" dir="rtl">
+
+        @foreach (var item in Model.Select((value, i) => new { i, value }))
+        {
+
+            var collapseId = $"collapse{item.i}";
+            var headingId = $"heading{item.i}";
+            <div class="accordion-item mb-2">
+                <h2 class="accordion-header" id="@headingId">
+                    <button class="accordion-button collapsed custom-btn" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="false" aria-controls="@collapseId">
+                        <span class="faq-number">@(item.i + 1)-</span> @item.value.Service
+                    </button>
+                </h2>
+                <div id="@collapseId" class="accordion-collapse collapse" aria-labelledby="@headingId" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body" style="white-space: pre-line;">
+                        @item.value.Desc
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

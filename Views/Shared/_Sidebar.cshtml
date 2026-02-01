@@ -193,6 +193,37 @@
             </div>
         </div>
 
+        <!-- Bade -->
+        <button class="nav-group sub-group" type="button" data-group="Bade" aria-expanded="false">
+            <span>Bade</span>
+            <span class="chev">▾</span>
+        </button>
+
+        <div class="nav-subtree" data-subtree="Bade">
+
+            <!-- Service -->
+            <a class="sub-item"
+               asp-controller="BadeServiceView"
+               asp-action="BadeService">
+                <span class="tree-line"></span>
+                <span>Service</span>
+            </a>
+            <!-- Transfer Fees -->
+            <a class="sub-item"
+               asp-controller="BadeFeesView"
+               asp-action="BadeFees">
+                <span class="tree-line"></span>
+                <span>Fees</span>
+            </a>
+            <!-- BaseTran Limits -->
+            <a class="sub-item"
+               asp-controller="BaseTranLimitsView"
+               asp-action="BadeTranLimit">
+                <span class="tree-line"></span>
+                <span>Transaction Limits</span>
+                </a>
+        </div>
+    
         <button class="nav-group" type="button" data-group="Roaming" aria-expanded="false">
             <span>Roaming</span>
             <span class="chev">▾</span>
