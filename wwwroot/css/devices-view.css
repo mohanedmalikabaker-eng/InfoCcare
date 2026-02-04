@@ -1,0 +1,120 @@
+﻿/* =========================
+   DEVICES VIEW – GLASS STYLE
+   ========================= */
+
+.devices-page {
+    color: #fff;
+}
+
+    /* Tabs */
+    .devices-page .nav-tabs {
+        border-bottom: none;
+    }
+
+        .devices-page .nav-tabs .nav-link {
+            color: #fff;
+            background: transparent;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+            .devices-page .nav-tabs .nav-link:hover {
+                color: #fff;
+                transform: translateY(-2px);
+            }
+
+            .devices-page .nav-tabs .nav-link.active {
+                background: rgba(255,255,255,0.15);
+                color: #fff;
+                border-radius: 10px;
+                font-weight: 600;
+                transform: translateY(-2px);
+            }
+
+    /* Table container (Glass like old style) */
+    .devices-page .custom-table-container {
+        max-width: 980px;
+        margin: 30px auto;
+        padding: 24px 22px;
+        background: linear-gradient( 135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.12) );
+        border-radius: 22px;
+        border: 1px solid rgba(255,255,255,0.45);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        overflow: visible;
+    }
+
+    /* Table */
+    .devices-page .devices-table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #fff;
+        background: transparent;
+    }
+
+        /* IMPORTANT: خلي الخلايا شفافة (تكسر أي background من Bootstrap) */
+        .devices-page .devices-table th,
+        .devices-page .devices-table td {
+            background: transparent !important;
+            padding: 12px 14px;
+            border: 1px solid rgba(255,255,255,0.18);
+            vertical-align: middle;
+            color: #fff;
+            text-align: right;
+        }
+
+        /* Header row */
+        .devices-page .devices-table thead th {
+            background: rgba(0,0,0,0.18) !important; /* خفيف زي القديم */
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Hover */
+        .devices-page .devices-table tbody tr:hover td {
+            background: rgba(255,255,255,0.08) !important;
+        }
+
+    /* Images */
+    .devices-page .device-img {
+        width: 90px;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+    }
+
+    /* dash */
+    .devices-page .dash {
+        opacity: 0.7;
+        color: rgba(255,255,255,0.8);
+    }
+
+    /* Headings */
+    .devices-page .section-title,
+    .devices-page h4 {
+        color: #fff;
+    }
+
+    /* Price highlight */
+    .devices-page .price {
+        color: #00e0ff;
+        font-weight: 600;
+    }
+
+    /* Column widths */
+    .devices-page .col-img {
+        width: 120px;
+    }
+
+    .devices-page .col-type {
+        width: 140px;
+    }
+
+    .devices-page .col-model {
+        width: 180px;
+    }
+
+    .devices-page .col-price {
+        width: 160px;
+    }
