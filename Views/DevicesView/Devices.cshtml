@@ -81,7 +81,7 @@
                                         }
 
                                         <td>@rows[i].Bundle</td>
-                                        <td class="price">@rows[i].EndPrice.ToString("N0")</td>
+                                        <td class="price">@rows[i].EndPrice.ToString("N3")</td>
                                         <td>@(string.IsNullOrWhiteSpace(rows[i].Desc) ? "—" : rows[i].Desc)</td>
                                     </tr>
                                 }
@@ -137,7 +137,9 @@
                                         }
 
                                         <td>@rows[i].Bundle</td>
-                                        <td class="price">@rows[i].EndPrice.ToString("N0")</td>
+                                        <td class="price">
+                                            @rows[i].EndPrice.ToString("N3")
+                                        </td>
                                         <td>@(string.IsNullOrWhiteSpace(rows[i].Desc) ? "—" : rows[i].Desc)</td>
                                     </tr>
                                 }

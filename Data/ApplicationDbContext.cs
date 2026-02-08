@@ -42,6 +42,7 @@ namespace InfoCcare.Data
         public DbSet<BadeFees> BadeFees { get; set; }
         public DbSet<BaseTranLimits> BaseTranLimits { get; set; }
         public DbSet<Device> Device { get; set; }
+        public DbSet<DeviceDescPrice> DeviceDescPrice { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -215,6 +216,12 @@ namespace InfoCcare.Data
             .WithMany()
             .HasForeignKey(c => c.CreatedById)
             .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<DeviceDescPrice>()
+         .HasOne(c => c.CreatedBy)
+         .WithMany()
+         .HasForeignKey(c => c.CreatedById)
+         .OnDelete(DeleteBehavior.Restrict);
 
         }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

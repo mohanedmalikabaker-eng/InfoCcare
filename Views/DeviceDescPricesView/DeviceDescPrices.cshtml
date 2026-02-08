@@ -1,0 +1,49 @@
+﻿@model IEnumerable<InfoCcare.Models.DeviceDescPrice>
+@{
+    Layout = "_GradientLayout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/table.css" asp-append-version="true" />
+}
+
+<div class="custom-table-container">
+    <div class="align-items-md-center">
+        <h4 style="text-align:center"> ""اسعار باقات الانترنت المخفضة للاجهزة""</h4>
+    </div>
+    <table class="custom-table" dir="rtl">
+        <thead>
+            <tr>
+                <th>اسم الباقة</th>
+                <th>سعر الباقة قبل التخفيض (شامل الضريبة)</th>
+                <th>سعر الباقة بعد التخفيض (شامل الضريبة)</th>
+                <th>نسبة التخفيض</th>
+                <th>رمز الاشتراك</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Bundle</td>
+                    <td> @item.PriceBe.ToString("N3")</td>
+                    <td>  @item.PriceAf.ToString("N3")</td>
+                    <td>@item.Desc</td>
+                    <td>@item.Code</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<hr />
+
+<div dir="rtl" class="custom-table-container">
+    <h4 style="text-align:right">ملاحظات</h4>
+
+    @foreach (var desc in Model)
+    {
+        <div>
+            <h4 style="text-align:right">@desc.Note</h4>
+        </div>
+    }
+</div>

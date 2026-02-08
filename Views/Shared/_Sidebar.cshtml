@@ -223,7 +223,8 @@
                 <span>Transaction Limits</span>
                 </a>
         </div>
-    
+
+        <!-- Roming -->
         <button class="nav-group" type="button" data-group="Roaming" aria-expanded="false">
             <span>Roaming</span>
             <span class="chev">▾</span>
@@ -245,7 +246,26 @@
                 <span class="tree-line"></span>
                 <span>Zones</span>
             </a>
-        </div> 
+        </div>
+
+        <!-- Device -->
+        <button class="nav-group" type="button" data-group="Device" aria-expanded="false">
+            <span>Device</span>
+            <span class="chev">▾</span>
+        </button>
+
+        <div class="nav-subtree" data-subtree="Device">
+
+            <a class="sub-item" asp-controller="DevicesView" asp-action="Devices">
+                <span class="tree-line"></span>
+                <span>Device</span>
+            </a>
+
+            <a class="sub-item" asp-controller="DeviceDescPricesView" asp-action="DeviceDescPrices">
+                <span class="tree-line"></span>
+                <span>Device Desc Prices</span>
+            </a>
+        </div>
 
         <a class="nav-group nav-link-like"
            asp-controller="RetailShopsView" asp-action="Index">
